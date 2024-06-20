@@ -1,34 +1,20 @@
-html {
-  height: 100%;
-  width: 100%;
-}
-body {
-font-family: Arial, sans-serif;
-background-color: #f0f0f0;
-margin: 0;
-padding: 0;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="weather-container">
+    <h2>Current Weather</h2>
+    <p id="location">Loading...</p>
+    <p id="temperature">Temperature: Loading...</p>
+    <p id="description">Description: Loading...</p>
+    <img id="icon" src="#" alt="Weather Icon">
+  </div>
 
-#weather-container {
-max-width: 600px;
-margin: 50px auto;
-background-color: #fff;
-padding: 20px;
-border-radius: 10px;
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
-text-align: center;
-}
-
-p {
-margin: 10px 0;
-}
-
-img {
-display: block;
-margin: 0 auto;
-width: 100px;
-height: 100px;
-}
+  <script src="script.js"></script>
+</body>
+</html>
