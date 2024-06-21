@@ -1,6 +1,8 @@
 window.addEventListener('load', () => {
+  const apiKey = '63ba21644414ba68a70e172aadd18def'; // Hardcode your API key here for testing purposes
+
   const fetchWeatherData = async (latitude, longitude) => {
-    const apiUrl = `/weather?lat=${latitude}&lon=${longitude}`;
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
     try {
       const response = await fetch(apiUrl);
       if (!response.ok) throw new Error('Network response was not ok');
@@ -48,3 +50,4 @@ window.addEventListener('load', () => {
 
   initializeWeatherApp();
 });
+
