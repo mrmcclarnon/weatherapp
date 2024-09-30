@@ -3,21 +3,21 @@ let isCelsius = true;
 
 // Fetch weather data from Open-Meteo API
 const fetchWeatherData = async (latitude, longitude) => {
-    // Removed cloudcover parameter
-    const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude.toFixed(4)}&longitude=${longitude.toFixed(4)}&current_weather=true&daily=temperature_2m_max,temperature_2m_min,weathercode,relativehumidity_2m&timezone=auto`;
+    // Removed relative humidity parameter for testing
+    const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude.toFixed(4)}&longitude=${longitude.toFixed(4)}&current_weather=true&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=auto`;
 
     try {
         console.log('Fetching weather data for coordinates:', { latitude, longitude });
         const response = await fetch(apiUrl);
         
         if (!response.ok) throw new Error('Network response was not ok');
-        
+
         const data = await response.json();
         localStorage.setItem('weatherData', JSON.stringify(data));
         return data;
     } catch (error) {
         console.error('Error fetching weather data:', error);
-        return JSON.parse(localStorage.getItem('weatherData')) || null;
+        return null; // Return null on error
     }
 };
 
@@ -31,7 +31,7 @@ const displayWeatherData = (data) => {
     const temperature = isCelsius
         ? data.current_weather.temperature
         : convertToFahrenheit(data.current_weather.temperature);
-    
+
     document.getElementById('temperature').textContent = `Temperature: ${temperature.toFixed(1)}°${isCelsius ? 'C' : 'F'}`;
     document.getElementById('wind-speed').textContent = `Wind Speed: ${data.current_weather.windspeed} km/h`;
     document.getElementById('wind-direction').textContent = `Wind Direction: ${data.current_weather.winddirection}°`;
@@ -70,6 +70,8 @@ const initializeWeatherApp = () => {
 
             if (data) {
                 displayWeatherData(data);
+            } else {
+                displayError(); // Display error if data is null
             }
         }, (error) => {
             console.error('Geolocation error:', error);
@@ -83,4 +85,5 @@ const initializeWeatherApp = () => {
 
 // Start the app
 initializeWeatherApp();
+
 
