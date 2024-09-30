@@ -5,69 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Weather App</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <div id="weather-container">
+    <header>
         <h1>Current Weather</h1>
-        
-        <!-- Dynamic Weather Data -->
-        <div id="location">Location: Fetching...</div>
-        <div id="temperature">Temperature: Loading...</div>
-        <div id="wind-speed">Wind Speed: Loading...</div>
-        <div id="wind-direction">Wind Direction: Loading...</div>
-        
-        <!-- Toggle Units -->
-        <div id="toggle-units">
-            <span>Toggle Units:</span>
-            <label class="switch">
-                <input type="checkbox" id="unit-toggle" checked>
-                <span class="slider round"></span>
-            </label>
+        <label>
+            Toggle Units: 
+            <input type="checkbox" id="unit-toggle" checked>
             <span id="unit-label">Celsius</span>
-        </div>
+        </label>
+    </header>
 
-        <!-- Forecast Section (Optional) -->
-        <!--
-        <div id="forecast-dropdown">Click to Show 3-Day Forecast ▼</div>
-        <div id="forecast-container" style="display:none;">
-            <div id="day-1">
-                <span id="day-1-date"></span>
-                <span id="day-1-temp"></span>
-                <span id="day-1-wind"></span>
-                <span id="day-1-direction"></span>
-                <span id="day-1-humidity"></span>
-                <span id="day-1-desc"></span>
+    <main>
+        <section id="current-weather">
+            <p id="location">Location: Fetching...</p>
+            <p id="temperature">Temperature: Loading...</p>
+            <p id="wind-speed">Wind Speed: Loading...</p>
+            <p id="wind-direction">Wind Direction: Loading...</p>
+            <p id="humidity">Humidity: Loading...</p>
+            <img id="weather-icon" src="" alt="Weather Icon" />
+        </section>
+
+        <section id="daily-forecast">
+            <h2>3-Day Forecast</h2>
+            <div id="forecast">
+                <div class="forecast-day" id="day-1">
+                    <p id="day-1-date"></p>
+                    <p id="day-1-temp"></p>
+                    <p id="day-1-cloud"></p>
+                    <p id="day-1-sunrise"></p>
+                    <p id="day-1-sunset"></p>
+                    <p id="day-1-desc"></p>
+                </div>
+                <div class="forecast-day" id="day-2">
+                    <p id="day-2-date"></p>
+                    <p id="day-2-temp"></p>
+                    <p id="day-2-cloud"></p>
+                    <p id="day-2-sunrise"></p>
+                    <p id="day-2-sunset"></p>
+                    <p id="day-2-desc"></p>
+                </div>
+                <div class="forecast-day" id="day-3">
+                    <p id="day-3-date"></p>
+                    <p id="day-3-temp"></p>
+                    <p id="day-3-cloud"></p>
+                    <p id="day-3-sunrise"></p>
+                    <p id="day-3-sunset"></p>
+                    <p id="day-3-desc"></p>
+                </div>
             </div>
-            <div id="day-2">
-                <span id="day-2-date"></span>
-                <span id="day-2-temp"></span>
-                <span id="day-2-wind"></span>
-                <span id="day-2-direction"></span> 
-                <span id="day-2-humidity"></span>
-                <span id="day-2-desc"></span>
-            </div>
-            <div id="day-3">
-                <span id="day-3-date"></span>
-                <span id="day-3-temp"></span>
-                <span id="day-3-wind"></span>
-                <span id="day-3-direction"></span> 
-                <span id="day-3-humidity"></span>
-                <span id="day-3-desc"></span>
-            </div>
-        </div>
-        -->
+        </section>
+    </main>
 
-        <!-- Image Credit -->
-        <div class="image-credit">
-            Image by <a href="https://commons.wikimedia.org/wiki/User:Tysto" target="_blank" rel="noopener noreferrer">Derek Jensen (Tysto)</a> - Self-photographed, Public Domain.
-        </div>
-
-        <!-- Footer -->
-        <footer>© 2024 My Weather App. All rights reserved.</footer>
-    </div>
-
-    <!-- JavaScript -->
-    <script src="script.js"></script>
+    <footer>
+        <p>Image by Derek Jensen (Tysto) - Self-photographed, Public Domain.</p>
+        <p>© 2024 My Weather App. All rights reserved.</p>
+    </footer>
 </body>
 </html>
+
 
