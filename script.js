@@ -3,7 +3,6 @@ let isCelsius = true;
 
 // Fetch weather data from Open-Meteo API
 const fetchWeatherData = async (latitude, longitude) => {
-    // Removed relative humidity parameter for testing
     const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude.toFixed(4)}&longitude=${longitude.toFixed(4)}&current_weather=true&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=auto`;
 
     try {
@@ -23,19 +22,30 @@ const fetchWeatherData = async (latitude, longitude) => {
 
 // Display current weather data
 const displayWeatherData = (data) => {
-    if (!data) {
+    if (!data || !data.current_weather) {
         displayError();
         return;
     }
 
+    const { current_weather, daily } = data;
+
     const temperature = isCelsius
-        ? data.current_weather.temperature
-        : convertToFahrenheit(data.current_weather.temperature);
+        ? current_weather.temperature
+        : convertToFahrenheit(current_weather.temperature);
 
     document.getElementById('temperature').textContent = `Temperature: ${temperature.toFixed(1)}°${isCelsius ? 'C' : 'F'}`;
-    document.getElementById('wind-speed').textContent = `Wind Speed: ${data.current_weather.windspeed} km/h`;
-    document.getElementById('wind-direction').textContent = `Wind Direction: ${data.current_weather.winddirection}°`;
+    document.getElementById('wind-speed').textContent = `Wind Speed: ${current_weather.windspeed} km/h`;
+    document.getElementById('wind-direction').textContent = `Wind Direction: ${current_weather.winddirection}°`;
     document.getElementById('location').textContent = 'Location: Based on your GPS';
+
+    // Optional: Display daily max/min temperatures
+    for (let i = 0; i < 3; i++) {
+        const maxTemp = isCelsius ? daily.temperature_2m_max[i] : convertToFahrenheit(daily.temperature_2m_max[i]);
+        const minTemp = isCelsius ? daily.temperature_2m_min[i] : convertToFahrenheit(daily.temperature_2m_min[i]);
+
+        // Assuming you have HTML elements with IDs like 'day-1-temp', 'day-2-temp', etc.
+        document.getElementById(`day-${i + 1}-temp`).textContent = `Max: ${maxTemp.toFixed(1)}°${isCelsius ? 'C' : 'F'}, Min: ${minTemp.toFixed(1)}°${isCelsius ? 'C' : 'F'}`;
+    }
 };
 
 // Convert Celsius to Fahrenheit
@@ -85,5 +95,6 @@ const initializeWeatherApp = () => {
 
 // Start the app
 initializeWeatherApp();
+
 
 
