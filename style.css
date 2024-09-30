@@ -131,4 +131,7 @@ input:checked + .slider:before {
     padding: 10px;
 }
 
+#daily-forecast {
+    display: none; /* Hide the daily forecast section */
+}
 
