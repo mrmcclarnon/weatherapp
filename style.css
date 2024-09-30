@@ -1,0 +1,122 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: url('../assets/Pittsburgh-gulf-tower-2007.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #D3D3D3; /* Default text color */
+}
+
+#weather-container {
+  background-color: rgba(28, 28, 28, 0.8);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: auto;
+  text-align: center;
+}
+
+#location, #wind-direction, #humidity, #cloud-cover {
+  color: #FFFFFF; /* White for these elements */
+}
+
+#temperature {
+  color: #00FFFF; /* Light blue for temperature */
+}
+
+#wind-speed {
+  color: #FF00FF; /* Magenta for wind speed */
+}
+
+.forecast-day {
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(28, 28, 28, 0.8);
+  color: #D3D3D3; /* Light gray for forecast text */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: rgba(28, 28, 28, 0.8);
+  color: #D3D3D3; /* Light gray for footer */
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.image-credit {
+  text-align: center;
+  margin: 10px 0;
+  font-size: 0.8em; /* Smaller font size */
+  color: #fff; /* White for visibility */
+}
+
+.image-credit a {
+  color: #fff; /* White for links */
+  text-decoration: underline; /* Underline links */
+}
+
+/* Toggle Switch Styles */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px; /* Rounded corners */
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%; /* Rounded toggle */
+}
+
+/* Checked State */
+input:checked + .slider {
+  background-color: #007BFF; /* Color when active */
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px); /* Move toggle switch */
+}
+
+#forecast-dropdown {
+  cursor: pointer;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  display: inline-block;
+}
+
+#forecast-container {
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
