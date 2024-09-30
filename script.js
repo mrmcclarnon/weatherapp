@@ -3,6 +3,7 @@ let isCelsius = true;
 
 // Fetch weather data from Open-Meteo API
 const fetchWeatherData = async (latitude, longitude) => {
+    // Removed cloudcover parameter
     const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude.toFixed(4)}&longitude=${longitude.toFixed(4)}&current_weather=true&daily=temperature_2m_max,temperature_2m_min,weathercode,relativehumidity_2m&timezone=auto`;
 
     try {
@@ -82,3 +83,4 @@ const initializeWeatherApp = () => {
 
 // Start the app
 initializeWeatherApp();
+
