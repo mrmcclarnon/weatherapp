@@ -94,7 +94,3 @@ const initializeWeatherApp = () => {
 
 // Start the app
 initializeWeatherApp();
-
-
-
-
