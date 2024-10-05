@@ -1,137 +1,108 @@
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background: url('../assets/Pittsburgh-gulf-tower-2007.jpg') no-repeat center center fixed;
-    background-size: cover;
-    color: #D3D3D3; /* Default text color */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('../assets/Pittsburgh-gulf-tower-2007.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: Arial, sans-serif;
+  color: #f0f0f0; /* Light text color for better contrast */
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
 }
 
-/* Weather Container */
 #weather-container {
-    background-color: rgba(28, 28, 28, 0.8); /* Dark background for readability */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    margin: auto;
-    text-align: center;
+  position: relative;
+  background-color: rgba(30, 30, 30, 0.85); /* Dark background for contrast */
+  padding: 20px; /* Outer padding for the weather container */
+  width: 350px; /* Set width to keep it neat */
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* More pronounced shadow */
+  z-index: 1;
+
+  /* Add a border for padding effect */
+  border: 5px solid rgba(0, 122, 204, 0.8); /* Soft blue border for a professional touch */
+  border-radius: 0.5rem; /* Match the border radius */
+  animation: rotation 20s linear infinite; /* Apply the rotation animation */
 }
 
-/* Current Weather Text Colors */
-#location, 
-#wind-direction, 
-#humidity, 
-#cloud-cover {
-    color: #FFFFFF; /* White for these elements */
+/* Animation for the border rotation */
+@keyframes rotation {
+  0% {
+    border-color: rgba(0, 122, 204, 0.8);
+  }
+  25% {
+    border-color: rgba(0, 204, 204, 0.8); /* Light teal */
+  }
+  50% {
+    border-color: rgba(0, 204, 0, 0.8); /* Green */
+  }
+  75% {
+    border-color: rgba(204, 204, 0, 0.8); /* Yellow */
+  }
+  100% {
+    border-color: rgba(0, 122, 204, 0.8);
+  }
 }
 
-#temperature {
-    color: #00FFFF; /* Light blue for temperature */
+/* Glowing Effects */
+#weather-container h2,
+.glow-text, .glow-heading, .info-box-title {
+  color: #00BFFF; /* Bright Sky Blue for headings */
+  text-shadow: 0 0 5px #00BFFF, 0 0 10px #00BFFF; /* Subtle glow effect */
 }
 
-#wind-speed {
-    color: #FF00FF; /* Magenta for wind speed */
+/* Weather Info Spacing */
+#weather-container p,
+#temperature,
+#wind-speed,
+#wind-direction,
+#location {
+  margin: 10px 0;
+  color: #FFD700; /* Soft amber for readability */
+  padding: 5px;
 }
 
-/* Daily Forecast */
-.forecast-day {
-    margin: 10px 0;
-    display: flex;
-    justify-content: space-between;
-    background-color: rgba(28, 28, 28, 0.8); /* Same background for forecast */
-    color: #D3D3D3; /* Light gray for forecast text */
-    padding: 10px;
-    border-radius: 5px;
+/* Ensure unit toggle container is styled */
+#unit-toggle-container {
+  margin-top: auto; /* Push the toggle switch to the bottom */
+  color: #D3D3D3; /* Light gray text for contrast */
 }
 
 /* Footer Styles */
 footer {
-    text-align: center;
-    padding: 10px;
-    background-color: rgba(28, 28, 28, 0.8);
-    color: #D3D3D3; /* Light gray for footer */
-    position: relative;
-    bottom: 0;
-    width: 100%;
+  text-align: center;
+  padding: 10px;
+  background-color: rgba(30, 30, 30, 0.85); /* Consistent footer background */
+  color: #f0f0f0; /* Light text color for footer */
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 }
 
-/* Image Credit */
+/* Color Variables */
+:root {
+  --gradient-angle: 0deg; /* Initial angle for the gradient */
+}
+
 .image-credit {
-    text-align: center;
-    margin: 10px 0;
-    font-size: 0.8em; /* Smaller font size */
-    color: #fff; /* White for visibility */
+  text-align: center;
+  margin: 10px 0;
+  font-size: 0.8em;
+  color: #f0f0f0; /* Consistent text color */
 }
 
 .image-credit a {
-    color: #fff; /* White for links */
-    text-decoration: underline; /* Underline links */
+  color: #00BFFF; /* Link color matches the glow color */
+  text-decoration: underline; /* Underline links */
 }
 
-/* Toggle Switch Styles */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
+body {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
 }
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-    border-radius: 34px; /* Rounded corners */
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: .4s;
-    border-radius: 50%; /* Rounded toggle */
-}
-
-/* Checked State */
-input:checked + .slider {
-    background-color: #007BFF; /* Color when active */
-}
-
-input:checked + .slider:before {
-    transform: translateX(26px); /* Move toggle switch */
-}
-
-/* Dropdown Styles */
-#forecast-dropdown {
-    cursor: pointer;
-    background-color: #f0f0f0;
-    padding: 10px;
-    border: 1px solid #ccc;
-    display: inline-block;
-}
-
-#forecast-container {
-    margin-top: 10px;
-    border: 1px solid #ccc;
-    padding: 10px;
-}
-
-#daily-forecast {
-    display: none; /* Hide the daily forecast section */
-}
-
